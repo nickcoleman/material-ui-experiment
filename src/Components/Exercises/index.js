@@ -1,12 +1,18 @@
 import React, { Fragment } from 'react';
 import {
   Grid,
+  IconButton,
   List,
   ListItem,
+  ListItemIcon,
   ListItemText,
+  ListItemSecondaryAction,
   Paper,
   Typography,
 } from '@material-ui/core';
+
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const styles = {
   paper: {
@@ -28,6 +34,7 @@ const Exercise = ({
   },
   exercises,
   category,
+  onDeleteExercise,
   onSelect,
 }) => {
   return (
@@ -48,6 +55,11 @@ const Exercise = ({
                   {exercises.map(({ title, id }) => (
                     <ListItem key={id} button onClick={() => onSelect(id)}>
                       <ListItemText primary={title} />
+                      <ListItemSecondaryAction>
+                        <IconButton onClick={() => onDeleteExercise(id)}>
+                          <DeleteIcon />
+                        </IconButton>
+                      </ListItemSecondaryAction>
                     </ListItem>
                   ))}
                 </List>
